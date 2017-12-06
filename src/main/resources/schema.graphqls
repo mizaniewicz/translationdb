@@ -1,0 +1,33 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Phrase {
+    id: ID!
+    label: String!
+    translations: [Translation]!
+}
+
+type Translation {
+    id: ID!
+    language: String!
+    text: String!
+    phrase: Phrase
+}
+
+type Query {
+    getPhrases: [Phrase]
+    getTranslations : [Translation]
+    getTranslationById(id: ID): Translation
+    getTranslationByLanguage(language: String): [Translation]
+    getTranslationByLanguageAndPhraseLabel(language: String, label: String): Translation
+    checkTranslation(language: String, label: String): String
+    getEmptyTranslations(language: String): [String]
+}
+
+type Mutation {
+    saveTranslation(language: String!, text: String!, label: String): Translation
+    deleteTranslationByLabel(language: String, label: String): String
+    deleteLabel(label: String): String
+}
