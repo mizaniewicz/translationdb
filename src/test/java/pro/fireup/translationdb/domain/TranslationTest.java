@@ -23,8 +23,8 @@ public class TranslationTest {
     @Test
     public void testTranslationDaoSave() {
         //Given
-        Translation translation1 = new Translation("pl", "tekst po polsku");
-        Translation translation2 = new Translation("en", "this is english");
+        Translation translation1 = new Translation("pl", "tekst po polsku", new Phrase("test 1"));
+        Translation translation2 = new Translation("en", "this is english", new Phrase("test 1"));
         Phrase phrase = new Phrase("test");
         phrase.getTranslations().add(translation1);
         phrase.getTranslations().add(translation2);
