@@ -1,18 +1,23 @@
-package pro.fireup.translationdb.repository;
+package pro.fireup.translationdb.service;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pro.fireup.translationdb.domain.Phrase;
 import pro.fireup.translationdb.domain.Translation;
+import pro.fireup.translationdb.repository.PhraseDao;
+import pro.fireup.translationdb.repository.TranslationDao;
 
-@Component
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class Mutation implements GraphQLMutationResolver {
     @Autowired
-    TranslationDao translationDao;
+    private TranslationDao translationDao;
 
     @Autowired
-    PhraseDao phraseDao;
+    private PhraseDao phraseDao;
 
     public Translation saveTranslation(String language, String text, String label) {
         Phrase phrase = phraseDao.findByLabel(label);
@@ -35,7 +40,7 @@ public class Mutation implements GraphQLMutationResolver {
         if (translation == null) {
             return "Translation not found";
         } else {
-            translationDao.delete(translation.getId());
+            translationDao.delete(translation);
             return "Translation deleted";
         }
     }
@@ -45,7 +50,7 @@ public class Mutation implements GraphQLMutationResolver {
         if (phrase == null) {
             return "Label not found";
         } else {
-            phraseDao.deleteByLabel(label);
+            phraseDao.delete(phrase);
             return "Label deleted";
         }
     }

@@ -1,22 +1,24 @@
-package pro.fireup.translationdb.repository;
+package pro.fireup.translationdb.service;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pro.fireup.translationdb.domain.Phrase;
 import pro.fireup.translationdb.domain.Translation;
+import pro.fireup.translationdb.repository.PhraseDao;
+import pro.fireup.translationdb.repository.TranslationDao;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class Query implements GraphQLQueryResolver {
     @Autowired
-    PhraseDao phraseDao;
+    private PhraseDao phraseDao;
 
     @Autowired
-    TranslationDao translationDao;
+    private TranslationDao translationDao;
 
     public List<Phrase> getPhrases() {
         return phraseDao.findAll();

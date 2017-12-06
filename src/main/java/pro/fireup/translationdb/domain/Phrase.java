@@ -11,6 +11,7 @@ public class Phrase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private long id;
+    @Column(unique = true)
     private String label;
     @OneToMany(
             targetEntity = Translation.class,
