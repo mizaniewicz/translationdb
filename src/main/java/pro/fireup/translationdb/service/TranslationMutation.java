@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class Mutation implements GraphQLMutationResolver {
+public class TranslationMutation implements GraphQLMutationResolver {
     @Autowired
     private TranslationDao translationDao;
 

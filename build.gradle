@@ -25,8 +25,6 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('org.springframework.boot:spring-boot-starter-validation')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.graphql-java:graphql-spring-boot-starter:3.10.0')
 	compile('com.graphql-java:graphql-java-tools:4.3.0')

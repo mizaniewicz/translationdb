@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class Query implements GraphQLQueryResolver {
+public class TranslationQuery implements GraphQLQueryResolver {
     @Autowired
     private PhraseDao phraseDao;
 
